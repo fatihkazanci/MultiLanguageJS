@@ -1,5 +1,5 @@
 # MultiLanguageJS
-XML or JSON is a JavaScript library that provides multi-language support to your web application with the text format.
+MultiLanguageJS is a JavaScript library that provides multi-language support for your web application with the using text, XML or JSON.
 
 # Installation
 Include the compiled files in your page.
@@ -8,7 +8,7 @@ Include the compiled files in your page.
 ```
 
 # Usage
-The language you will create is enough to have JSON String, JSON Object and XML String data types.
+You can use Json String, Json Object and XML String data types to language convertion.
 
 ```html
   <!--
@@ -30,7 +30,7 @@ The language you will create is enough to have JSON String, JSON Object and XML 
        
     --> 
 ```
-Example Let's add data to the JSON Object data type and then add this to the new Multilanguage library we will create it.
+Example of JSON Object Usage
 
 ```javascript
       var languageDataList = [
@@ -47,19 +47,19 @@ Example Let's add data to the JSON Object data type and then add this to the new
         var language = new MultipleLanguage();
         language.AppendLanguage(languageDataList);
 ```
-If we want to create a multilanguage of the XML string data type you can do as follows.
+Example of XML Usage
 ```javascript
       var languageDataListXmlString = "<?xml version='1.0' encoding='UTF-8'?><languages><Hello data-lang='tr-TR'>Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız</Hello> <UserName data-lang='tr-TR'>Kullanıcı Adı {0} Son Giriş: {1}</UserName><welcome data-lang='tr-TR'>Hoş Geldiniz</welcome><Hello data-lang='en-GB'>Hello {0}. You are connecting from {sehir} city. You are {1} years old.</Hello> <UserName data-lang='en-GB'>Username {0} Last Login: {1}</UserName><welcome data-lang='en-GB'>Welcome</welcome></languages>";
       var language = new MultipleLanguage();
       language.AppendLanguage(languageDataListXmlString);
 ```
 
-After. By default, you must specify the language you will display on the page and then use the <b>SetLanguageElements()</b> prototype. Otherwise, the language selected on your page will not be displayed.
+Don't forget to specify default language. Otherwise, language library will not work.
 ```javascript
-   language.SetLanguage("en-GB"); // Specifies the default language.
-   language.SetLanguageElements(); // Allows you to view the selected language.
+   language.SetLanguage("en-GB"); // Default language specification
+   language.SetLanguageElements(); // To view the selected language
 ```
-> After making all of these, we need to specify the keywords of the language to the HTML tags we want.
+> We developed html-tag structure for your comfortable coding. Define a keyword for each data element. and use data-{keyword} notation.
 
 
 Add an Attribute named Data-Lang to any HTML tag and type the keyword you will translate its value.
@@ -68,20 +68,20 @@ Add an Attribute named Data-Lang to any HTML tag and type the keyword you will t
 <div data-lang="GoodMorning"></div>
 ```
 
-If a dynamically is a data in the article, we need to specify this as ornate brackets in our object and then specify an Attribute that starts with <b>data-lang-param</b> on the HTML tag.
+ If you are using html tag option and you have dynamic parameters in your data, use data-lang-{paramName} notation to text replace operation like string.Format Syntax
 ```javascript
  var languageDataList = [
             { Hello:"Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız",lang:"tr-TR"},
             { UserName:"Kullanıcı Adı {0} Son Giriş: {1}",lang:"tr-TR" }
   ]; // sample data
 ```
-The setting of the HTML tag according to the above data is as follows.
+You need to use following html structure for above scenairo
 ```html
 <div data-lang="Hello" data-lang-param-0="Fatih" data-lang-param-1="30" data-lang-param-sehir="Trabzon"></div>
 <span data-lang="UserName" data-lang-param-0="Radley" data-lang-param-1="10.10.2010 16:30"></span>
 ```
 
-If you want to assign the data to a variable as javascript, you can do it.
+Also, you can get values with using javascript.
 ```javascript
 var getExampleData = language.lang.GoodMorning;
 ```
@@ -92,13 +92,14 @@ or
 var getExampleData = language.lang['GoodMorning'];
 ```
 
-If the language has a dynamic data, you can use the <b>mlFormat()</b> prototype.
+If you have dynamic data, you can use the <b>mlFormat()</b> and <b>mlObjectFormat()</b> prototype. 
+
+Use <b>mlFormat()</b> for ordinal number specifications.
 ```javascript
 var getExampleData = language.lang.UserName.mlFormat("Radley","10.10.2010 15:40");
 ```
 
-However, if your ornate bracket are not a numeric value, you must use the <b>mlObjectFormat()</b> prototype. Otherwise, the <i>mlFormat()</i> will not work the Prototype.
-
+Use <b>mlObjectFormat()</b> for others
 ```javascript
 var getExampleData = language.lang["Hello"].mlObjectFormat({ 0:"Fatih", 1:30,sehir:"trabzon"} );
 ```
