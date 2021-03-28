@@ -54,7 +54,7 @@ If we want to create a multilanguage of the XML string data type you can do as f
       language.AppendLanguage(languageDataListXmlString);
 ```
 
-After. By default, you must specify the language you will display on the page and then use the <b>SetLanguageElements</b> prototype. Otherwise, the language selected on your page will not be displayed.
+After. By default, you must specify the language you will display on the page and then use the <b>SetLanguageElements()</b> prototype. Otherwise, the language selected on your page will not be displayed.
 ```javascript
    language.SetLanguage("en-GB"); // Specifies the default language.
    language.SetLanguageElements(); // Allows you to view the selected language.
