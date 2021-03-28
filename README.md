@@ -59,16 +59,16 @@ Don't forget to specify default language. Otherwise, language library will not w
    language.SetLanguage("en-GB"); // Default language specification
    language.SetLanguageElements(); // To view the selected language
 ```
-> We developed html-tag structure for your comfortable coding. Define a keyword for each data element. and use data-{keyword} notation.
+> We developed html-tag structure for your comfortable coding. Define a keyword for each data element. and use <b>data-{keyword}</b> notation.
 
 
-Add an Attribute named Data-Lang to any HTML tag and type the keyword you will translate its value.
+Add an Attribute named <b>data-lang</b> to any HTML tag and type the keyword you will translate its value.
 
 ```html
 <div data-lang="GoodMorning"></div>
 ```
 
- If you are using html tag option and you have dynamic parameters in your data, use data-lang-{paramName} notation to text replace operation like string.Format Syntax
+ If you are using html tag option and you have dynamic parameters in your data, use <b>data-lang-{paramName}</b> notation to text replace operation like string.Format Syntax
 ```javascript
  var languageDataList = [
             { Hello:"Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız",lang:"tr-TR"},
