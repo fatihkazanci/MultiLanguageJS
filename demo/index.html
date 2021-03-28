@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div data-lang="GoodMorning"></div>
+    <div data-lang="Hello" data-lang-param-0="Fatih" data-lang-param-1="30" data-lang-param-sehir="Trabzon"></div>
+    <span data-lang="UserName" data-lang-param-0="Radley" data-lang-param-1="10.10.2010 16:30"></span>
+    <h1 data-lang="welcome"></h1>
+    
+    <script src="../multilanguage.es5.min.js"></script>
+    <!--
+        XML Data Example
+        -----------------------------------------------------------
+        <?xml version='1.0' encoding='UTF-8'?>
+        <languages>
+            <Hello data-lang='tr-TR'>Merhaba</Hello>
+            <UserName data-lang='tr-TR'>Kullanıcı Adı</UserName>
+        </languages>
+       
+
+        JSON Data Example
+        ------------------------------------------------------------
+        [
+            {"Hello":"Merhaba","lang":"tr-TR"},
+            {"UserName":"Kullanıcı Adı","lang":"tr-TR"}
+        ]
+    --> 
+    <script>
+        //Sample Data1
+        var languageDataListJsonString = '[{"Hello":"Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız","lang":"tr-TR"},{"UserName":"Kullanıcı Adı {0} Son Giriş: {1}","lang":"tr-TR"},{"welcome":"Hoş Geldiniz","lang":"tr-TR"},{"Hello":"Hello {0}. You are connecting from {sehir} city. You are {1} years old.","lang":"en-GB"},{"UserName":"Username {0} Last Login: {1}","lang":"en-GB"},{"welcome":"Welcome","lang":"en-GB"}]';
+
+        //Sample Data2
+        var languageDataListXmlString = "<?xml version='1.0' encoding='UTF-8'?><languages><Hello data-lang='tr-TR'>Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız</Hello> <UserName data-lang='tr-TR'>Kullanıcı Adı {0} Son Giriş: {1}</UserName><welcome data-lang='tr-TR'>Hoş Geldiniz</welcome><Hello data-lang='en-GB'>Hello {0}. You are connecting from {sehir} city. You are {1} years old.</Hello> <UserName data-lang='en-GB'>Username {0} Last Login: {1}</UserName><welcome data-lang='en-GB'>Welcome</welcome></languages>";
+
+        //Sample data3
+        var languageDataList = [
+            { Hello:"Merhaba {0}.{sehir} şehrinden bağlanıyorsunuz.{1} yaşındasınız",lang:"tr-TR"},
+            { UserName:"Kullanıcı Adı {0} Son Giriş: {1}",lang:"tr-TR" },
+            { welcome: "Hoş Geldiniz", lang:"tr-TR"},
+            { Hello:"Hello {0}. You are connecting from {sehir} city. You are {1} years old.",lang:"en-GB"},
+            { UserName:"Username {0} Last Login: {1}",lang:"en-GB" },
+            { welcome: "Welcome", lang:"en-GB"},
+            { GoodMorning:"Günaydın", lang:"tr-TR"},
+            { GoodMorning:"Good Morning", lang:"en-GB"}
+        ];
+
+        var language = new MultipleLanguage();
+        language.AppendLanguage(languageDataList);
+        language.SetLanguage("en-GB");
+        language.SetLanguageElements();
+
+        var getExampleData = language.lang["Hello"].mlObjectFormat({ 0:"Fatih", 1:30,sehir:"trabzon"} );
+        var getExampleData2 = language.lang.UserName.mlFormat("Radley","10.10.2010 15:40");
+
+        console.log(getExampleData);
+        console.log(getExampleData2);
+    </script>
+</body>
+</html>
