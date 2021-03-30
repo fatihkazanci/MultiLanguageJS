@@ -1,6 +1,6 @@
 /*
 *	MultiLanguageJS
-*	Updated On: 07/01/2019
+*	Updated On: 29/03/2021
 *	By Fatih KAZANCI
 *   Licenced By GNU General Public License v3.0
 *   https://github.com/fatihkazanci/MultiLanguageJS/blob/main/LICENSE
