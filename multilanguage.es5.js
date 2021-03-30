@@ -1,5 +1,5 @@
 /*
-*	SelectWatch v1.0.1
+*	MultiLanguageJS
 *	Updated On: 07/01/2019
 *	By Fatih KAZANCI
 *   Licenced By GNU General Public License v3.0
